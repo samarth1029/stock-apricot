@@ -1,7 +1,7 @@
-from server.app.src.base.exchange_rate_operation import (
-    ExchangeRateOperation,
+from app.src.base.stock_operations import (
+    StockDataOperation,
 )
-from server.app import (
+from app import (
     __version__,
     __appname__,
     __email__,
@@ -21,16 +21,40 @@ class Api:
 
     @staticmethod
     def get_top_gainers() -> dict:
-        _gainers_response = ExchangeRateOperation().execute()
-
-        _gainers_list = _gainers_response.processed_response.data.currency_rates
-
-        return {"data": _gainers_list}
+        _query = """
+                    WITH temporaryTable(ticker,high_diff,date)
+                    AS(SELECT ticker,high_diff,MAX(date) 
+                    FROM weekly_stocks GROUP BY ticker)
+                    SELECT ticker,high_diff FROM temporaryTable
+                    ORDER BY high_diff DESC LIMIT 10;
+                """
+        _top_gainers_response = StockDataOperation(_query=_query).execute()
+        return {"data": _top_gainers_response}
 
     @staticmethod
     def get_top_losers() -> dict:
-        _losers_response = ExchangeRateOperation().execute()
+        _query = """
+                    WITH temporaryTable(ticker,high_diff,date)
+                    AS(SELECT ticker,high_diff,MAX(date) 
+                    FROM weekly_stocks GROUP BY ticker)
+                    SELECT ticker,high_diff FROM temporaryTable
+                    ORDER BY high_diff ASC LIMIT 10;
+                """
+        _top_losers_response = StockDataOperation(_query=_query).execute()
+        return {"data": _top_losers_response}
 
-        _losers_list = _losers_response.processed_response.data.currency_rates
+    @staticmethod
+    def get_weekly_report() -> dict:
+        _query = """
+                    WITH temporaryTable(ticker,average,high,low)
+                    AS(SELECT ticker,ROUND(AVG(high),2) AS average,MAX(high),MIN(low) 
+                    FROM weekly_stocks GROUP BY ticker)
+                    SELECT ticker,high,low,average FROM temporaryTable; 
+                """
+        _weekly_metrics_response = StockDataOperation(_query=_query).execute()
+        return {"data": _weekly_metrics_response}
 
-        return {"data": _losers_list}
+
+if __name__ == "__main__":
+    _obj = Api().get_top_gainers()
+    print(_obj)

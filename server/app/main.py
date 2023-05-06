@@ -3,9 +3,9 @@ main code for FastAPI setup
 """
 import uvicorn
 from fastapi import FastAPI, HTTPException
-from server.app.api.api import Api
-from server.app.models.models import AppDetails
-from server.app.models.models import GetStocksResponse
+from app.api.api import Api
+from app.models.models import AppDetails
+from app.models.models import GetStocksResponse
 
 description = """
 API for collecting historic stock data for certain ticker symbols🚀
@@ -59,21 +59,36 @@ def get_app_info() -> AppDetails:
 def get_top_gainers() -> GetStocksResponse:
     if _response := Api().get_top_gainers():
         return GetStocksResponse(
-            stock_data=_response.get("data")
+            data=_response.get("data")
         )
     else:
         raise HTTPException(status_code=400, detail="Error")
 
 
 @app.post(
-    "/get_top_gainers",
+    "/get_top_losers",
     status_code=200,
     tags=["stock-metrics"],
 )
 def get_top_losers() -> GetStocksResponse:
     if _response := Api().get_top_losers():
+        print(type(_response.get("data")))
         return GetStocksResponse(
-            stock_data=_response.get("data")
+            data=_response.get("data")
+        )
+    else:
+        raise HTTPException(status_code=400, detail="Error")
+
+
+@app.post(
+    "/get_weekly_report",
+    status_code=200,
+    tags=["stock-metrics"],
+)
+def get_weekly_report() -> GetStocksResponse:
+    if _response := Api().get_weekly_report():
+        return GetStocksResponse(
+            data=_response.get("data")
         )
     else:
         raise HTTPException(status_code=400, detail="Error")

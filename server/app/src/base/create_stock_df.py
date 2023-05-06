@@ -1,9 +1,9 @@
-from server.app.src.base.yahoo_finance_api_fetcher import YahooAPI
-from server.app.utils.process_df import process_df
-from server.app.utils.db_logger import log_into_db
+from app.src.base.yahoo_finance_api_fetcher import YahooAPI
+from app.utils.process_df import process_df
+from app.utils.db_logger import log_into_db
 from datetime import date, timedelta
 from sqlalchemy import create_engine, text
-import json
+import pprint
 
 
 def create_df_and_log_into_db(start_date: date, end_date: date):
@@ -31,6 +31,5 @@ if __name__ == "__main__":
             """
     query = connection.execute(text(_query))
     result = {'data': [dict(zip(tuple(query.keys()), i)) for i in query.cursor]}
-    print(len(result.get("data")))
-    result = json.dumps(result, indent=4, separators=(',', ': '))
+    pprint.pprint(result.get("data"))
 
