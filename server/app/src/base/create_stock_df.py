@@ -33,3 +33,4 @@ if __name__ == "__main__":
     result = {'data': [dict(zip(tuple(query.keys()), i)) for i in query.cursor]}
     print(len(result.get("data")))
     result = json.dumps(result, indent=4, separators=(',', ': '))
+
