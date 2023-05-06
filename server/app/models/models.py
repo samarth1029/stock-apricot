@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from typing import Union, List
+from typing import Union
 
 
 class AppDetails(BaseModel):
@@ -10,4 +10,4 @@ class AppDetails(BaseModel):
 
 
 class GetStocksResponse(BaseModel):
-    stock_data: Union[list[dict], None] = None
+    data: Union[list[dict], None] = None
