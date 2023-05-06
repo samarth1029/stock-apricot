@@ -87,3 +87,4 @@ server/.env
 
 # Mypy cache
 .mypy_cache/
+*.sqlite3
