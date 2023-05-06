@@ -2,7 +2,7 @@
 ==============================
 
 
-Project Organization
+Project Organization(server)
 ------------
 
     ├── LICENSE
