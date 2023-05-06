@@ -1,12 +1,255 @@
-{% extends 'C:\BI\Projects\stock-apricot\client\stock_apricot_app\templates\base.html' %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %} {% endblock title %}Contact | Stock Apricot</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+  <style>
+    body{margin-top:20px;}
+    .home-blog {
+        padding-top: 80px;
+        padding-bottom: 80px;
+    }
+    @media (min-width: 992px) {
+        .home-blog {
+            padding-top: 100px;
+            padding-bottom: 100px;
+        }
+    }
+    .home-blog .section-title {
+        padding-bottom: 15px;
+    }
+    .home-blog .media {
+        margin-top: 50px;
+    }
+    @media (min-width: 768px) {
+        .home-blog .media {
+            margin-top: 30px;
+        }
+    }
+    .bg-sand {
+        background-color: #f5f5f6;
+    }
+    .media.blog-media {
+        margin-top: 30px;
+        position: relative;
+        display: block;
+    }
+    @media (min-width: 992px) {
+        .media.blog-media {
+            display: table;
+        }
+    }
+    .media.blog-media .circle {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        background-color: rgba(0, 0, 0, 0.5);
+        white-space: nowrap;
+        position: absolute;
+        padding: 0;
+        top: 20px;
+        left: 20px;
+        text-align: center;
+        box-shadow: none;
+        transform: translateX(0);
+        color: #fff;
+        transition: background-color 0.3s ease;
+    }
+    .media.blog-media .circle .day {
+        color: #fff;
+        transition: color 0.25s ease;
+        font-weight: 500;
+        font-size: 28px;
+        line-height: 1;
+        margin-top: 12px;
+    }
+    .media.blog-media .circle .month {
+        text-transform: uppercase;
+        font-size: 14px;
+    }
+    .media.blog-media > a {
+        position: relative;
+        display: block;
+    }
+    @media (min-width: 992px) {
+        .media.blog-media > a {
+            display: table-cell;
+            vertical-align: top;
+            min-width: 200px;
+        }
+    }
+    @media (min-width: 1200px) {
+        .media.blog-media > a {
+            min-width: 230px;
+        }
+    }
+    .media.blog-media > a:before {
+        position: absolute;
+        content: "";
+        top: 15px;
+        left: 15px;
+        right: 15px;
+        bottom: 15px;
+        opacity: 0;
+        transform: scale(0);
+        transition: transform 0.3s ease, opacity 0.3s;
+        background: rgba(12, 198, 82, 0.7);
+    }
+    .media.blog-media > a img {
+        width: 100%;
+    }
+    .media.blog-media:hover > a:before {
+        opacity: 1;
+        transform: scale(1);
+    }
+    .media.blog-media:hover .circle {
+        background-color: rgba(255, 255, 255, 0.9);
+    }
+    .media.blog-media:hover .circle .day,
+    .media.blog-media:hover .circle .month {
+        color: #222;
+    }
+    .media.blog-media:hover .media-body h5 {
+        color: #0cc652;
+    }
+    .media.blog-media:hover .media-body a.post-link {
+        color: #0cc652;
+        text-decoration: underline;
+    }
+    .media.blog-media .media-body {
+        border: 1px solid #efeff3;
+        padding: 30px 30px 10px;
+        font-size: 14px;
+        background: #fff;
+        border-top: none;
+    }
+    @media (min-width: 992px) {
+        .media.blog-media .media-body {
+            padding: 15px 20px 10px;
+            border-top: 1px solid #efeff3;
+            border-left: none;
+            display: table-cell;
+            vertical-align: top;
+        }
+    }
+    @media (min-width: 1200px) {
+        .media.blog-media .media-body {
+            padding: 30px 20px 10px;
+        }
+    }
+    .media.blog-media .media-body h5 {
+        transition: color 0.3s ease;
+        margin-bottom: 15px;
+    }
+    @media (min-width: 992px) {
+        .media.blog-media .media-body h5 {
+            font-size: 15px;
+        }
+    }
+    @media (min-width: 1200px) {
+        .media.blog-media .media-body h5 {
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+    }
+    .media.blog-media .media-body a.post-link {
+        display: block;
+        color: #222;
+        font-size: 11px;
+        padding: 23px 0;
+        text-transform: uppercase;
+        font-weight: 400;
+    }
+    @media (min-width: 992px) {
+        .media.blog-media .media-body a.post-link {
+            padding: 7px 0;
+        }
+    }
+    @media (min-width: 1200px) {
+        .media.blog-media .media-body a.post-link {
+            padding: 23px 0;
+        }
+    }
+    .media.blog-media .media-body ul {
+        position: relative;
+        padding: 10px 0 0;
+    }
+    .media.blog-media .media-body ul li {
+        display: inline-block;
+        width: 49%;
+        position: relative;
+    }
+    .media.blog-media .media-body ul li:before {
+        position: absolute;
+        content: "";
+        top: 5px;
+        left: 0;
+        width: 1px;
+        height: 14px;
+        background: #eeeef2;
+    }
+    .media.blog-media .media-body ul li:first-child:before {
+        visibility: hidden;
+    }
+    .media.blog-media .media-body ul:before {
+        position: absolute;
+        content: "";
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background: #eeeef2;
+    }
+  </style>
+</head>
+<body>
 
-{% block title %}Home{%endblock title %}
+<nav class="navbar na vbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">Stock Apricot</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about">About Us</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="/services" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Metrics
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/services">Top Gainers</a></li>
+            <li><a class="dropdown-item" href="#">Top Losers</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Weekly Report</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/contact">Contact Us</a>
+        </li>
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
 
-{% block body %}
 
 <section class="container mt-5">
   <!--Contact heading-->
   <div class="row">
+<!--    <div class="col-sm-12 text-center mb-4">-->
+<!--      <a class="btn btn-primary" target="_blank" href="https://www.paypal.com/webapps/shoppingcart?flowlogging_id=f8876459b9ac2&mfid=1619175810225_f8876459b9ac2#/checkout/openButton"> Donate Now <i class="fa fa-dollar"></i></a>-->
+<!--    </div>-->
     <!--Grid column-->
     <div class="col-sm-12 mb-4 col-md-5">
       <!--Form with header-->
@@ -17,44 +260,42 @@
             <p class="m-0">We’ll write rarely, but only the best content.</p>
           </div>
         </div>
-        <div class="card-body">
+        <div class="card-body p-3">
           <form method="post" action="/contact">
             {% csrf_token %}
-            <div class="form-group">
-              &nbsp;
-              <label for="name">Name</label>
-              <div class="input-group mb-2 mb-sm-0 my-2">
-              <input type="text" class="form-control" id="name" name="name" placeholder="Your Name">
-              </div>
+          <div class="form-group">
+            <label>Your name </label>
+            <div class="input-group mb-2 mb-sm-0 my-2">
+              <input value="" type="text" name="name" class="form-control" id="name" placeholder="Your name">
             </div>
-
-            <div class="form-group">
-              &nbsp;
-              <label for="email">Email</label>
-              <div class="input-group mb-2 mb-sm-0 my-2">
-              <input type="email" class="form-control" id="email" name="email" placeholder="Email">
-              </div>
+          </div>
+          <div class="form-group">
+            &nbsp;
+            <label>Your email</label>
+            <div class="input-group mb-2 mb-sm-0 my-2">
+              <input type="email" value="" name="email" class="form-control" id="email" placeholder="Email">
             </div>
-
-            <div class="form-group">
-              &nbsp;
-              <label for="subject">Subject</label>
-              <div class="input-group mb-2 mb-sm-0 my-2">
-              <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject">
-              </div>
+          </div>
+          <div class="form-group">
+            &nbsp;
+            <label>Subject</label>
+            <div class="input-group mb-2 mb-sm-0 my-2">
+              <input type="text" name="subject" class="form-control" id="subject" placeholder="Subject">
             </div>
-
-            <div class="form-group">
-              &nbsp;
-              <label for="message">Message</label>
-              <div class="input-group mb-2 mb-sm-0 my-2">
-              <input type="text" class="form-control" id="message" rows="3" name="message">
-              </div>
+          </div>
+          <div class="form-group">
+            &nbsp;
+            <label>Message</label>
+            <div class="input-group mb-2 mb-sm-0 my-2">
+              <input type="text" class="form-control" name="message">
             </div>
-            <div class="text-center">
-              <button class="btn btn-primary my-4" type="submit">Submit</button>
-            </div>
+          </div>
+          <div class="text-center">
+            <input type="submit" name="submit" value="Submit" class="btn btn-primary btn-block rounded-0 py-2 my-2">
+          </div>
           </form>
+
+        </div>
 
       </div>
     </div>
@@ -64,7 +305,7 @@
     <div class="col-sm-12 col-md-7">
       <!--Google map-->
       <div class="mb-4">
-        <iframe src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=NIT Rourkela,Odisha,India&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+        <iframe src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=NIT Rourkela Orissa India&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
       </div>
       <!--Buttons-->
       <div class="row text-center">
@@ -74,7 +315,7 @@
         </div>
         <div class="col-md-4">
           <a class="bg-primary px-3 py-2 rounded text-white mb-2 d-inline-block"><i class="fa fa-phone"></i></a>
-          <p>+91-8676801424</p>
+          <p>+918676801424</p>
         </div>
         <div class="col-md-4">
           <a class="bg-primary px-3 py-2 rounded text-white mb-2 d-inline-block"><i class="fa fa-envelope"></i></a>
@@ -84,8 +325,9 @@
     </div>
     <!--Grid column-->
   </div>
-  </div>
 </section>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+</body>
+</html>
 
-{% endblock body %}
-
+<div class="mapouter"><div class="gmap_canvas"><iframe class="gmap_iframe" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src=""></iframe><a href="https://capcuttemplate.org/">Capcut Template</a></div><style>.mapouter{position:relative;text-align:right;width:600px;height:400px;}.gmap_canvas {overflow:hidden;background:none!important;width:600px;height:400px;}.gmap_iframe {width:600px!important;height:400px!important;}</style></div>
