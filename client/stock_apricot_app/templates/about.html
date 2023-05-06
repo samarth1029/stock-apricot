@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %} {% endblock title %}About | Stock Apricot</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+  <style>
+    body{margin-top:20px;}
+    .home-blog {
+        padding-top: 80px;
+        padding-bottom: 80px;
+    }
+    @media (min-width: 992px) {
+        .home-blog {
+            padding-top: 100px;
+            padding-bottom: 100px;
+        }
+    }
+    .home-blog .section-title {
+        padding-bottom: 15px;
+    }
+    .home-blog .media {
+        margin-top: 50px;
+    }
+    @media (min-width: 768px) {
+        .home-blog .media {
+            margin-top: 30px;
+        }
+    }
+    .bg-sand {
+        background-color: #f5f5f6;
+    }
+    .media.blog-media {
+        margin-top: 30px;
+        position: relative;
+        display: block;
+    }
+    @media (min-width: 992px) {
+        .media.blog-media {
+            display: table;
+        }
+    }
+    .media.blog-media .circle {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        background-color: rgba(0, 0, 0, 0.5);
+        white-space: nowrap;
+        position: absolute;
+        padding: 0;
+        top: 20px;
+        left: 20px;
+        text-align: center;
+        box-shadow: none;
+        transform: translateX(0);
+        color: #fff;
+        transition: background-color 0.3s ease;
+    }
+    .media.blog-media .circle .day {
+        color: #fff;
+        transition: color 0.25s ease;
+        font-weight: 500;
+        font-size: 28px;
+        line-height: 1;
+        margin-top: 12px;
+    }
+    .media.blog-media .circle .month {
+        text-transform: uppercase;
+        font-size: 14px;
+    }
+    .media.blog-media > a {
+        position: relative;
+        display: block;
+    }
+    @media (min-width: 992px) {
+        .media.blog-media > a {
+            display: table-cell;
+            vertical-align: top;
+            min-width: 200px;
+        }
+    }
+    @media (min-width: 1200px) {
+        .media.blog-media > a {
+            min-width: 230px;
+        }
+    }
+    .media.blog-media > a:before {
+        position: absolute;
+        content: "";
+        top: 15px;
+        left: 15px;
+        right: 15px;
+        bottom: 15px;
+        opacity: 0;
+        transform: scale(0);
+        transition: transform 0.3s ease, opacity 0.3s;
+        background: rgba(12, 198, 82, 0.7);
+    }
+    .media.blog-media > a img {
+        width: 100%;
+    }
+    .media.blog-media:hover > a:before {
+        opacity: 1;
+        transform: scale(1);
+    }
+    .media.blog-media:hover .circle {
+        background-color: rgba(255, 255, 255, 0.9);
+    }
+    .media.blog-media:hover .circle .day,
+    .media.blog-media:hover .circle .month {
+        color: #222;
+    }
+    .media.blog-media:hover .media-body h5 {
+        color: #0cc652;
+    }
+    .media.blog-media:hover .media-body a.post-link {
+        color: #0cc652;
+        text-decoration: underline;
+    }
+    .media.blog-media .media-body {
+        border: 1px solid #efeff3;
+        padding: 30px 30px 10px;
+        font-size: 14px;
+        background: #fff;
+        border-top: none;
+    }
+    @media (min-width: 992px) {
+        .media.blog-media .media-body {
+            padding: 15px 20px 10px;
+            border-top: 1px solid #efeff3;
+            border-left: none;
+            display: table-cell;
+            vertical-align: top;
+        }
+    }
+    @media (min-width: 1200px) {
+        .media.blog-media .media-body {
+            padding: 30px 20px 10px;
+        }
+    }
+    .media.blog-media .media-body h5 {
+        transition: color 0.3s ease;
+        margin-bottom: 15px;
+    }
+    @media (min-width: 992px) {
+        .media.blog-media .media-body h5 {
+            font-size: 15px;
+        }
+    }
+    @media (min-width: 1200px) {
+        .media.blog-media .media-body h5 {
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+    }
+    .media.blog-media .media-body a.post-link {
+        display: block;
+        color: #222;
+        font-size: 11px;
+        padding: 23px 0;
+        text-transform: uppercase;
+        font-weight: 400;
+    }
+    @media (min-width: 992px) {
+        .media.blog-media .media-body a.post-link {
+            padding: 7px 0;
+        }
+    }
+    @media (min-width: 1200px) {
+        .media.blog-media .media-body a.post-link {
+            padding: 23px 0;
+        }
+    }
+    .media.blog-media .media-body ul {
+        position: relative;
+        padding: 10px 0 0;
+    }
+    .media.blog-media .media-body ul li {
+        display: inline-block;
+        width: 49%;
+        position: relative;
+    }
+    .media.blog-media .media-body ul li:before {
+        position: absolute;
+        content: "";
+        top: 5px;
+        left: 0;
+        width: 1px;
+        height: 14px;
+        background: #eeeef2;
+    }
+    .media.blog-media .media-body ul li:first-child:before {
+        visibility: hidden;
+    }
+    .media.blog-media .media-body ul:before {
+        position: absolute;
+        content: "";
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background: #eeeef2;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar na vbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="">Stock Apricot</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about">About Us</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="/services" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Metrics
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/services">Top Gainers</a></li>
+            <li><a class="dropdown-item" href="#">Top Losers</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Weekly Report</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/contact">Contact Us</a>
+        </li>
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<section class="home-blog bg-sand">
+  <div class="container">
+    <!-- section title -->
+    <div class="row justify-content-md-center">
+      <div class="col-xl-5 col-lg-6 col-md-8">
+        <div class="section-title text-center title-ex1">
+          <h2>About Us</h2>
+          <p>Welcome to Stock Apricot, the premier source for comprehensive stock data and analytics.</p>
+        </div>
+      </div>
+    </div>
+    <!-- section title ends -->
+    <div class="row ">
+      <div class="col-md-6">
+        <div class="media blog-media">
+          <a href="blog-post-left-sidebar.html"><img class="d-flex" src="https://images.unsplash.com/photo-1649519604463-f3408a11664d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjJ8fGFib3V0JTIwdXMlMjBwYWdlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=600&q=60" alt="Generic placeholder image"></a>
+          <div class="circle">
+            <h5 class="day">01</h5>
+<!--            <span class="month">sep</span>-->
+          </div>
+          <div class="media-body">
+<!--            <a href=""><h5 class="mt-0">Standard Blog Post</h5></a>-->
+            At Stock Apricot, we are passionate about providing investors with accurate, reliable, and easy-to-use tools to help them make smarter investment decisions. Whether you're a seasoned investor or just starting, our website offers a wealth of information to guide you towards financial success.
+            <a href="blog-post-left-sidebar.html" class="post-link">Read More</a>
+            <ul>
+              <li>by: Admin</li>
+              <li class="text-right"><a href="blog-post-left-sidebar.html">07 comments</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="media blog-media">
+          <a href="blog-post-left-sidebar.html"><img class="d-flex" src="https://images.unsplash.com/photo-1559000857-670162a2e338?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjh8fGFib3V0JTIwdXMlMjB2ZXJ0aWNhbCUyMGltYWdlc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=600&q=60" alt="Generic placeholder image"></a>
+          <div class="circle">
+            <h5 class="day">02</h5>
+<!--            <span class="month">sep</span>-->
+          </div>
+          <div class="media-body">
+<!--            <a href=""><h5 class="mt-0">perferendis labore</h5></a>-->
+            We understand that investing can be complex, which is why we have designed our website to be user-friendly and accessible to everyone. Our website's intuitive interface and powerful analytics tools allow you to easily track your favorite stocks, identify trends, and make informed investment decisions.            <a href="blog-post-left-sidebar.html" class="post-link">Read More</a>
+            <ul>
+              <li>by: Admin</li>
+              <li class="text-right"><a href="blog-post-left-sidebar.html">04 comments</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="media blog-media">
+          <a href="blog-post-left-sidebar.html"><img class="d-flex" src="https://images.unsplash.com/photo-1550111676-8d65dade0a8e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzF8fGFib3V0JTIwdXMlMjB2ZXJ0aWNhbCUyMGltYWdlc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=600&q=60" alt="Generic placeholder image"></a>
+          <div class="circle">
+            <h5 class="day">03</h5>
+<!--            <span class="month">sep</span>-->
+          </div>
+          <div class="media-body">
+<!--            <a href=""><h5 class="mt-0">deleniti incdunt magni</h5></a>-->
+            At Stock Apricot, we believe that knowledge is power, which is why we offer a range of resources to help you stay informed about the stock market. Our blog features expert analysis, market news, and investment tips to help you stay ahead of the game.            <a href="blog-post-left-sidebar.html" class="post-link">Read More</a>
+            <ul>
+              <li>by: Admin</li>
+              <li class="text-right"><a href="blog-post-left-sidebar.html">10 comments</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="media blog-media">
+          <a href="blog-post-left-sidebar.html"><img class="d-flex" src="https://images.unsplash.com/photo-1550114711-8daf8fec534e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjZ8fGFib3V0JTIwdXMlMjBwYWdlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=600&q=60" alt="Generic placeholder image"></a>
+          <div class="circle">
+            <h5 class="day">04</h5>
+<!--            <span class="month">sep</span>-->
+          </div>
+          <div class="media-body">
+<!--            <a href=""><h5 class="mt-0">Explicabo magnam </h5></a>-->
+            We are committed to providing our users with the best possible experience and are always looking for ways to improve our website. If you have any questions or feedback, please don't hesitate to contact us. We value your input and are here to help you succeed in your investment journey.            <a href="blog-post-left-sidebar.html" class="post-link">Read More</a>
+            <ul>
+              <li>by: Admin</li>
+              <li class="text-right"><a href="blog-post-left-sidebar.html">06 comments</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+</body>
+</html>

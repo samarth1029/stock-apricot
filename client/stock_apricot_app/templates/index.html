@@ -1,0 +1,111 @@
+{% extends 'C:\BI\Projects\stock-apricot\client\stock_apricot_app\templates\base.html' %}
+
+{% block title %}Home{%endblock title %}
+
+{% block body %}
+<div class="container-fluid px-0">
+    <div id="carouselExampleCaptions" class="carousel slide">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://images.unsplash.com/photo-1635840420670-5470266ffa39?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=869&q=80" class="d-block w-100" height=400 alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>History may not repeat itself, but it often rhymes</h5>
+                    <p>Explore historic stock data to see how past patterns can inform your present investment strategy</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://images.unsplash.com/photo-1504805572947-34fad45aed93?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8cmFuZG9tJTIwZnJvbSUyMGElMjBzcGVjaWZpYyUyMHVzZXJ8ZW58MHx8MHx8&auto=format&fit=crop&w=1000&q=60" class="d-block w-100" height=400 alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Investing isn't just about numbers, it's about understanding the stories that those numbers tell</h5>
+                    <p>Let historic stock data be your guide to a richer, more meaningful investment experience</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://images.unsplash.com/photo-1468254095679-bbcba94a7066?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzd8fGZpbmFuY2UlMjBzdG9ja3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=600&q=60" class="d-block w-100" height=400 alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5 style="color:black;">The past may be gone, but it's not forgotten</h5>
+                    <p style="color:black;">Take the guesswork out of investing and rely on our accurate and reliable stock data to guide your portfolio</p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>
+
+
+<div class="container my-3">
+    <h1 class="my-4 text-center">Select from our range of services</h1>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+                <img src="https://images.unsplash.com/photo-1533580909002-a2f298d005eb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" class="d-block w-100" alt="...">
+
+                <div class="card-body">
+                    <p class="card-text">
+                    <h5>Top gainers</h5>
+                    Make better investment decisions by tracking the top ticker symbol gainers compared to yesterday. With the real-time updates, you'll always be in the know and have a clear picture of the market's performance.
+                    </p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                        </div>
+                        <small class="text-muted">9 mins</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+                <img src="https://images.unsplash.com/photo-1616947300138-630d7cb3ae0c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=873&q=80" class="d-block w-100" alt="...">
+                <div class="card-body">
+                    <p class="card-text">
+                        <h5>Top Losers</h5>
+                    Identify the biggest stock losers and make smarter investment decisions. With our website's real-time updates, you can easily compare today's performance with yesterday's and stay ahead of the game.
+                    </p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                        </div>
+                        <small class="text-muted">9 mins</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+                <img src="https://images.unsplash.com/photo-1621264437251-59d700cfb327?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=872&q=80" class="d-block w-100" alt="...">
+                <div class="card-body">
+                    <p class="card-text">
+                        <h5>Weekly Report</h5>
+                    Get a comprehensive view of the stock market with our website's weekly averages, highs, and lows for all tickers. Stay on top of market trends and make informed investment decisions with ease.
+                    </p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                        </div>
+                        <small class="text-muted">9 mins</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+</div>
+{% endblock body %}
