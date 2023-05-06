@@ -72,7 +72,6 @@ def get_top_gainers() -> GetStocksResponse:
 )
 def get_top_losers() -> GetStocksResponse:
     if _response := Api().get_top_losers():
-        print(type(_response.get("data")))
         return GetStocksResponse(
             data=_response.get("data")
         )
