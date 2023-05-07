@@ -2,6 +2,7 @@ from django.shortcuts import render, HttpResponse
 from django.contrib import messages
 from datetime import datetime
 from home.models import Contact
+from server.app.api.api import Api
 
 
 def index(request):
@@ -10,6 +11,21 @@ def index(request):
 
 def about(request):
     return render(request, 'about.html')
+
+
+def weekly_report(request):
+    context = {"data": Api().get_weekly_report().get("data")}
+    return render(request, 'weekly_report.html', context)
+
+
+def gainers(request):
+    context = {"data": Api().get_top_gainers().get("data")}
+    return render(request, 'gainers.html', context)
+
+
+def losers(request):
+    context = {"data": Api().get_top_losers().get("data")}
+    return render(request, 'losers.html', context)
 
 
 def services(request):
