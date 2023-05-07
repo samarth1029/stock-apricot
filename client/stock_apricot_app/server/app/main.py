@@ -3,9 +3,9 @@ main code for FastAPI setup
 """
 import uvicorn
 from fastapi import FastAPI, HTTPException
-from app.api.api import Api
-from app.models.models import AppDetails
-from app.models.models import GetStocksResponse
+from client.stock_apricot_app.server.app.api.api import Api
+from client.stock_apricot_app.server.app.models.models import AppDetails
+from client.stock_apricot_app.server.app.models.models import GetStocksResponse
 
 description = """
 API for collecting historic stock data for certain ticker symbols🚀

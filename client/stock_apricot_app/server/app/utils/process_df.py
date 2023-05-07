@@ -21,7 +21,8 @@ def create_dict_list_for_each_ticker(df, data) -> list:
             "ticker": df["ticker_symbol"][_item],
             "high": round(float(df["High"][_item]), 2),
             "low": round(float(df["Low"][_item]), 2),
-            "high_diff": round(float(df["high_diff"][_item]), 2)
+            "high_diff": round(float(df["high_diff"][_item]), 2),
+            "img": df["img"][_item],
         }
         data.append(_dict)
     return data

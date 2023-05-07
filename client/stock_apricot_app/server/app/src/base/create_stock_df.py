@@ -1,20 +1,22 @@
-from app.src.base.yahoo_finance_api_fetcher import YahooAPI
-from app.utils.process_df import process_df
-from app.utils.db_logger import log_into_db
+from server.app.src.base.yahoo_finance_api_fetcher import YahooAPI
+from server.app.utils.process_df import process_df
+from server.app.utils.db_logger import log_into_db
 from datetime import date, timedelta
 from sqlalchemy import create_engine, text
+from server.app.data.ticker_images import get_ticker_images
 import pprint
 
 
 def create_df_and_log_into_db(start_date: date, end_date: date):
     dh = YahooAPI()
-    with open(r"C:\BI\Projects\stock-apricot\server\data\raw\ticker_symbols.txt", "r") as f:
+    with open(r"C:\BI\Projects\stock-apricot\client\stock_apricot_app\server\data\raw\ticker_symbols.txt", "r") as f:
         tickers = [(line.strip()).split() for line in f]
     data = []
     for ticker in tickers:
         try:
             df = dh.get_ticker_data(str(ticker[0]), start_date, end_date)
             df['ticker_symbol'] = str(ticker[0])
+            df['img'] = str(get_ticker_images().get(ticker[0]))
             process_df(df, data)
         except Exception as e:
             print(f"Error: {e}")
@@ -32,4 +34,3 @@ if __name__ == "__main__":
     query = connection.execute(text(_query))
     result = {'data': [dict(zip(tuple(query.keys()), i)) for i in query.cursor]}
     pprint.pprint(result.get("data"))
-

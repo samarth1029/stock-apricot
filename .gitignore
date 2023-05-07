@@ -57,7 +57,7 @@ docs/_build/
 target/
 
 # DotEnv configuration
-server/.env
+client/stock_apricot_app/server/.env
 
 # Database
 *.db

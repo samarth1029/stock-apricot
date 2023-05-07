@@ -1,6 +1,6 @@
 from sqlalchemy import create_engine, text
-from app.models.models import GetStocksResponse
-from app.src.base.create_stock_df import create_df_and_log_into_db
+from server.app.models.models import GetStocksResponse
+from server.app.src.base.create_stock_df import create_df_and_log_into_db
 from datetime import date, timedelta
 from typing import Union
 
